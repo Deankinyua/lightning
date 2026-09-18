@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Lightning v2.19.0-pre">
+
+
+    <title>Lightning.Validators — Lightning v2.19.0-pre</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-AC3AF4A6.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://openfn.github.io/lightning" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Lightning" />
+        </a>
+
+      <div>
+        <a href="https://openfn.github.io/lightning" class="sidebar-projectName" translate="no">
+Lightning
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.19.0-pre
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Lightning</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Lightning.Validators</span> 
+      <small class="app-vsn" translate="no">(Lightning v2.19.0-pre)</small>
+
+    </h1>
+
+      <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Extra validators for Ecto.Changeset.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#invisible_only?/1" data-no-tooltip="" translate="no">invisible_only?(value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>True when a string is made up entirely of characters that draw nothing.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#normalize_name_for_match/1" data-no-tooltip="" translate="no">normalize_name_for_match(value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Folds a name to the form used when matching it against a stored one.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#valid_uuid?/1" data-no-tooltip="" translate="no">valid_uuid?(value)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns <code class="inline">true</code> when <code class="inline">value</code> is a well-formed UUID that will dump cleanly to a
+<code class="inline">:binary_id</code> on insert/update.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_email_format/2" data-no-tooltip="" translate="no">validate_email_format(changeset, field \\ :email)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validates that an email field contains a properly formatted email address.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_exclusive/3" data-no-tooltip="" translate="no">validate_exclusive(changeset, fields, message)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validate that only one of the fields is set at a time.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_name/3" data-no-tooltip="" translate="no">validate_name(changeset, field, message \\ &quot;can't contain control characters&quot;)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Normalises a name field and rejects any control character in it.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_name_fits_column/4" data-no-tooltip="" translate="no">validate_name_fits_column(changeset, field, message, width \\ 255)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Rejects a name that will not fit the column it is stored in.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_no_null_bytes/3" data-no-tooltip="" translate="no">validate_no_null_bytes(changeset, field, message)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Rejects a NUL in a field that ends up inside a jsonb column.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_no_null_bytes_deep/3" data-no-tooltip="" translate="no">validate_no_null_bytes_deep(changeset, field, message)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Rejects a NUL anywhere inside a map field that ends up in a jsonb column.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_one_required/3" data-no-tooltip="" translate="no">validate_one_required(changeset, fields, message)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validate that at least one of the fields is set.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_required_assoc/3" data-no-tooltip="" translate="no">validate_required_assoc(changeset, assoc, message \\ &quot;is required&quot;)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validate that an association is present</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_url/2" data-no-tooltip="" translate="no">validate_url(changeset, field)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validates a URL in a changeset field.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_uuid/2" data-no-tooltip="" translate="no">validate_uuid(changeset, fields)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validates that the given field(s) contain a well-formed UUID.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+
+    <div class="functions-list">
+<section class="detail" id="invisible_only?/1">
+
+  <div class="detail-header">
+    <a href="#invisible_only?/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">invisible_only?(value)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L99" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> invisible_only?(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>True when a string is made up entirely of characters that draw nothing.</p><p>Exposed so the fixture that keeps the client's copy of this rule in step can
+be generated from it. See <code class="inline">assets/js/utils/nameValidation.ts</code>.</p>
+  </section>
+</section>
+<section class="detail" id="normalize_name_for_match/1">
+
+  <div class="detail-header">
+    <a href="#normalize_name_for_match/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">normalize_name_for_match(value)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L143" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> normalize_name_for_match(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Folds a name to the form used when matching it against a stored one.</p><p>Only NFC and a trim, which is what <a href="#validate_name/3"><code class="inline">validate_name/3</code></a> applies on save, so a
+caller comparing a name that never went through a changeset against one that
+did is comparing like with like. Not case folding: names are case-sensitive.</p>
+  </section>
+</section>
+<section class="detail" id="valid_uuid?/1">
+
+  <div class="detail-header">
+    <a href="#valid_uuid?/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">valid_uuid?(value)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L274" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> valid_uuid?(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Returns <code class="inline">true</code> when <code class="inline">value</code> is a well-formed UUID that will dump cleanly to a
+<code class="inline">:binary_id</code> on insert/update.</p><p>Uses <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.UUID.html#dump/1"><code class="inline">Ecto.UUID.dump/1</code></a> (not <code class="inline">cast/1</code>): <code class="inline">dump</code> rejects raw 16-byte binaries and
+unsubstituted import placeholders that <code class="inline">cast</code> would accept, matching what the
+database actually enforces. <code class="inline">nil</code> is not a valid UUID.</p><p>This is the single source of truth for the &quot;dumpable UUID&quot; check — both
+<a href="#validate_uuid/2"><code class="inline">validate_uuid/2</code></a> and schema-level guards (e.g. <code class="inline">Workflows.Job</code>) build on it so
+they cannot drift apart.</p>
+  </section>
+</section>
+<section class="detail" id="validate_email_format/2">
+
+    <span id="validate_email_format/1"></span>
+
+  <div class="detail-header">
+    <a href="#validate_email_format/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_email_format(changeset, field \\ :email)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L20" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_email_format(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Validates that an email field contains a properly formatted email address.</p><p>Applies: required check, format regex, max 160 chars, lowercases the value.
+This is a pure format check — no database lookup. Use <code class="inline">User.validate_email/1</code>
+when you also need to verify the email is unique in the users table.</p>
+  </section>
+</section>
+<section class="detail" id="validate_exclusive/3">
+
+  <div class="detail-header">
+    <a href="#validate_exclusive/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_exclusive(changeset, fields, message)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L201" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_exclusive(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()], <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Validate that only one of the fields is set at a time.</p><p>Example:</p><pre><code class="makeup elixir" translate="no"><span class="n">changeset</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="n">validate_exclusive</span><span class="p" data-group-id="1669737224-1">(</span><span class="w">
+  </span><span class="p" data-group-id="1669737224-2">[</span><span class="ss">:source_job_id</span><span class="p">,</span><span class="w"> </span><span class="ss">:source_trigger_id</span><span class="p" data-group-id="1669737224-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;source_job_id and source_trigger_id are mutually exclusive&quot;</span><span class="w">
+</span><span class="p" data-group-id="1669737224-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="validate_name/3">
+
+    <span id="validate_name/2"></span>
+
+  <div class="detail-header">
+    <a href="#validate_name/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_name(changeset, field, message \\ &quot;can't contain control characters&quot;)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L81" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_name(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Normalises a name field and rejects any control character in it.</p><p>The value is normalised to NFC and trimmed before anything else runs, so a
+later <code class="inline">validate_required/3</code> or <code class="inline">validate_length/3</code> in the same changeset sees
+the value that will actually be stored. Call this straight after <code class="inline">cast/3</code>.</p><p><code class="inline">assets/js/utils/nameValidation.ts</code> is the client-side copy of the rule.</p>
+  </section>
+</section>
+<section class="detail" id="validate_name_fits_column/4">
+
+    <span id="validate_name_fits_column/3"></span>
+
+  <div class="detail-header">
+    <a href="#validate_name_fits_column/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_name_fits_column(changeset, field, message, width \\ 255)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L169" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_name_fits_column(
+  <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()
+) :: <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Rejects a name that will not fit the column it is stored in.</p><p>Postgres counts a varchar in codepoints; the product caps above this one
+count graphemes, so a name built from multi-codepoint clusters can pass a
+100 grapheme cap and raise <code class="inline">22001</code> on insert.</p><p>Skipped when the field already has an error, so a plainly over-long name gets
+the product cap's message and this one stays quiet. <code class="inline">width</code> defaults to 255,
+the width of every name column in this schema; pass it for a narrower one
+such as <code class="inline">credentials.schema</code>.</p><p>The message callers pass should not quote a number: from where the user sits
+the limit is the product cap.</p>
+  </section>
+</section>
+<section class="detail" id="validate_no_null_bytes/3">
+
+  <div class="detail-header">
+    <a href="#validate_no_null_bytes/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_no_null_bytes(changeset, field, message)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L115" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_no_null_bytes(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Rejects a NUL in a field that ends up inside a jsonb column.</p><p>Postgres refuses a NUL anywhere inside a jsonb value (<code class="inline">22P05</code>). Unlike a
+name, these fields legitimately hold newlines and tabs, so only the NUL is
+refused rather than the whole control set. Malformed UTF-8 goes the same way.</p>
+  </section>
+</section>
+<section class="detail" id="validate_no_null_bytes_deep/3">
+
+  <div class="detail-header">
+    <a href="#validate_no_null_bytes_deep/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_no_null_bytes_deep(changeset, field, message)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L129" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_no_null_bytes_deep(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Rejects a NUL anywhere inside a map field that ends up in a jsonb column.</p><p>Walks the whole structure rather than checking the top level, because a NUL
+in a key is just as fatal as one in a value.</p>
+  </section>
+</section>
+<section class="detail" id="validate_one_required/3">
+
+  <div class="detail-header">
+    <a href="#validate_one_required/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_one_required(changeset, fields, message)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L225" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_one_required(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()], <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Validate that at least one of the fields is set.</p>
+  </section>
+</section>
+<section class="detail" id="validate_required_assoc/3">
+
+    <span id="validate_required_assoc/2"></span>
+
+  <div class="detail-header">
+    <a href="#validate_required_assoc/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_required_assoc(changeset, assoc, message \\ &quot;is required&quot;)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L249" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_required_assoc(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Validate that an association is present</p><blockquote><p><strong>NOTE</strong>
+This should only be used when using <code class="inline">put_assoc</code>, not <code class="inline">cast_assoc</code>.
+<code class="inline">cast_assoc</code> provides a <code class="inline">required: true</code> option.
+Unlike <code class="inline">validate_required</code>, this does not add the field to the <code class="inline">required</code>
+list in the schema.</p></blockquote>
+  </section>
+</section>
+<section class="detail" id="validate_url/2">
+
+  <div class="detail-header">
+    <a href="#validate_url/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_url(changeset, field)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L320" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_url(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()) :: <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Validates a URL in a changeset field.</p><p>Ensures that the URL:</p><ul><li>Has a valid <code class="inline">http</code> or <code class="inline">https</code> scheme.</li><li>Has a valid host (domain name, IPv4, or IPv6).</li><li>The host is not blank and does not exceed 255 characters.</li></ul><p>Returns a changeset error for invalid URLs.</p>
+  </section>
+</section>
+<section class="detail" id="validate_uuid/2">
+
+  <div class="detail-header">
+    <a href="#validate_uuid/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_uuid(changeset, fields)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/utils/validators.ex#L299" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_uuid(<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) :: <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.Changeset.html#t:t/0">Ecto.Changeset.t</a>()</pre>
+
+      </div>
+
+<p>Validates that the given field(s) contain a well-formed UUID.</p><p><code class="inline">:binary_id</code> fields are not format-checked by <code class="inline">cast/3</code> — a malformed value
+(e.g. an unsubstituted import placeholder) passes casting and only raises
+<a href="https://hexdocs.pm/ecto/3.13.2/Ecto.ChangeError.html"><code class="inline">Ecto.ChangeError</code></a> when dumped on insert/update. This converts that into a
+changeset error instead.</p><p>Only runs when a non-nil change is present for the field, so optional
+foreign keys left unset are unaffected.</p><blockquote><p><strong>Narrowing:</strong> uses <a href="https://hexdocs.pm/ecto/3.13.2/Ecto.UUID.html#dump/1"><code class="inline">Ecto.UUID.dump/1</code></a>, not <code class="inline">cast/1</code>. <code class="inline">dump</code> additionally
+rejects raw 16-byte binaries and unsubstituted placeholders that <code class="inline">cast</code>
+accepted. Confirmed no live caller relied on the laxer behaviour (uppercase
+canonical UUIDs still pass).</p></blockquote><pre><code class="makeup elixir" translate="no"><span class="n">changeset</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="n">validate_uuid</span><span class="p" data-group-id="3363206211-1">(</span><span class="p" data-group-id="3363206211-2">[</span><span class="ss">:id</span><span class="p">,</span><span class="w"> </span><span class="ss">:workflow_id</span><span class="p" data-group-id="3363206211-2">]</span><span class="p" data-group-id="3363206211-1">)</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Lightning.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

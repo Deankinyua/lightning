@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Lightning v2.19.0-pre">
+
+
+    <title>Lightning.Policies.Sandboxes — Lightning v2.19.0-pre</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-AC3AF4A6.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://openfn.github.io/lightning" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Lightning" />
+        </a>
+
+      <div>
+        <a href="https://openfn.github.io/lightning" class="sidebar-projectName" translate="no">
+Lightning
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v2.19.0-pre
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Lightning</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Lightning.Policies.Sandboxes</span> 
+      <small class="app-vsn" translate="no">(Lightning v2.19.0-pre)</small>
+
+    </h1>
+
+      <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/policies/sandboxes.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>The Bodyguard Policy module for sandbox project operations.</p><p>Sandbox authorization mirrors regular projects: access is decided by the
+acting user's role on the project they're acting on (or the workspace
+root, where the cascade applies). <code class="inline">User.role</code> (<code class="inline">:user</code> / <code class="inline">:superuser</code>)
+is a user-type for global user-management screens; it is not a
+project-access bypass and has no effect on sandbox policy decisions, in
+line with <a href="Lightning.Policies.ProjectUsers.html"><code class="inline">Lightning.Policies.ProjectUsers</code></a>.</p><ul><li>Sandbox owners/admins can manage their own sandboxes</li><li>Root project owners/admins can manage any sandbox in their workspace</li><li>Editors (and above) on the parent project can provision sandboxes</li></ul><p>Every action except provisioning and merging acts on a sandbox, and a
+workspace root is not one. A root is refused before any role is considered,
+which is what keeps the root cascade from admitting the root itself.</p><p>Destructive actions on a sandbox (delete, update, merge) are scoped to
+admin/owner on the sandbox itself (or the root cascade above). This
+matches the rest of Lightning, where destructive actions are admin/owner
+scoped, and it keeps the merge button on the sandboxes list aligned with
+the cleanup step that runs after merge submission (which calls
+<code class="inline">:delete_sandbox</code> and so requires admin/owner on the source).</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:actions/0" data-no-tooltip="" translate="no">actions()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#authorize/3" data-no-tooltip="" translate="no">authorize(action, user, parent_project)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Authorize sandbox operations based on the user's role on the project
+involved.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#manage_permissions/3" data-no-tooltip="" translate="no">manage_permissions(sandboxes, user, root_project)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Bulk manage check for multiple sandboxes, avoiding N+1 queries.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+
+    <div class="types-list">
+<section class="detail" id="t:actions/0">
+
+  <div class="detail-header">
+    <a href="#t:actions/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">actions()</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/policies/sandboxes.ex#L34" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> actions() ::
+  :delete_sandbox
+  | :update_sandbox
+  | :provision_sandbox
+  | :merge_sandbox
+  | :cancel_scheduled_deletion</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+
+    <div class="functions-list">
+<section class="detail" id="authorize/3">
+
+  <div class="detail-header">
+    <a href="#authorize/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">authorize(action, user, parent_project)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/policies/sandboxes.ex#L90" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> authorize(
+  <a href="#t:actions/0">actions</a>(),
+  <a href="Lightning.Accounts.User.html#t:t/0">Lightning.Accounts.User.t</a>(),
+  <a href="Lightning.Projects.Project.html#t:t/0">Lightning.Projects.Project.t</a>()
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Authorize sandbox operations based on the user's role on the project
+involved.</p><h2 id="authorize/3-authorization-rules" class="section-heading"><a href="#authorize/3-authorization-rules" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Authorization Rules</span></h2><h3 id="authorize/3-delete_sandbox-update_sandbox-and-cancel_scheduled_deletion" class="section-heading"><a href="#authorize/3-delete_sandbox-update_sandbox-and-cancel_scheduled_deletion" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text"><code class="inline">:delete_sandbox</code>, <code class="inline">:update_sandbox</code> and <code class="inline">:cancel_scheduled_deletion</code></span></h3><p>The subject must be a sandbox: a project with no parent is refused outright,
+whoever is asking. Beyond that the user must be one of:</p><ul><li>Owner/admin of the sandbox itself</li><li>Owner/admin of the root project (workspace)</li></ul><h3 id="authorize/3-provision_sandbox" class="section-heading"><a href="#authorize/3-provision_sandbox" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text"><code class="inline">:provision_sandbox</code></span></h3><p>User must be editor/admin/owner of the parent project they're creating
+the sandbox under.</p><h3 id="authorize/3-merge_sandbox" class="section-heading"><a href="#authorize/3-merge_sandbox" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text"><code class="inline">:merge_sandbox</code></span></h3><p>This check authorises the <strong>target side</strong> of a merge: the user must be
+editor/admin/owner on the target project (the project being merged
+<em>into</em>). The merge flow also requires admin/owner on the <strong>source
+sandbox</strong> itself, enforced by <a href="#manage_permissions/3"><code class="inline">manage_permissions/3</code></a> (button
+gate) and by the post-merge cleanup, which calls <code class="inline">:delete_sandbox</code>
+to retire the source and so requires admin/owner there.</p><h3 id="authorize/3-support-access" class="section-heading"><a href="#authorize/3-support-access" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Support access</span></h3><p>No sandbox action honours it: every clause decides on <code class="inline">role</code> alone, so a
+support user with no membership row is refused even on a consenting project.
+Inherited behaviour, not a ruling.</p><h2 id="authorize/3-parameters" class="section-heading"><a href="#authorize/3-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">action</code> - The action being attempted</li><li><code class="inline">user</code> - The user attempting the action</li><li><code class="inline">project</code> - The sandbox project (for delete/update), parent project (for provision),
+or target project (for merge)</li></ul>
+  </section>
+</section>
+<section class="detail" id="manage_permissions/3">
+
+  <div class="detail-header">
+    <a href="#manage_permissions/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">manage_permissions(sandboxes, user, root_project)</h1>
+
+
+        <a href="https://github.com/OpenFn/lightning/blob/main/lib/lightning/policies/sandboxes.ex#L157" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> manage_permissions(
+  [<a href="Lightning.Projects.Project.html#t:t/0">Lightning.Projects.Project.t</a>()],
+  <a href="Lightning.Accounts.User.html#t:t/0">Lightning.Accounts.User.t</a>(),
+  <a href="Lightning.Projects.Project.html#t:t/0">Lightning.Projects.Project.t</a>()
+) :: %{required(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}</pre>
+
+      </div>
+
+<p>Bulk manage check for multiple sandboxes, avoiding N+1 queries.</p><p>Returns a map <code class="inline">sandbox_id =&gt; boolean()</code> where <code class="inline">true</code> means the user can
+perform the destructive actions the sandbox list offers on that row: they are
+an owner/admin on the sandbox itself, or an owner/admin on the root project
+(cascade). The workspace root is always <code class="inline">false</code>, which is what the list relies
+on to withhold edit, delete and merge from the root. Note this is the merge
+<em>source</em> side; <code class="inline">:merge_sandbox</code> authorises the target and a root is a legal
+target.</p><p>Assumes <code class="inline">root_project.project_users</code> and each <code class="inline">sandbox.project_users</code>
+are preloaded (as ensured by <code class="inline">Projects.list_workspace_projects/2</code>).</p><p>Reads those preloaded rows rather than resolving a <code class="inline">Scope</code>, so it does not
+hold the actor to the project's MFA requirement. Nothing reaches it that has
+not already been held to it: the list it feeds mounts
+<code class="inline">LightningWeb.Hooks.:project_scope</code>, which redirects an unenrolled member to
+<code class="inline">/mfa_required</code> before the page renders, and every action a <code class="inline">true</code> enables
+refuses on its own.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Lightning.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
